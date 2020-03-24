@@ -1,0 +1,54 @@
+acura nsx
+acura tlx
+alfa romeo spider
+audi a4
+audi a6
+audi a8
+audi rs8
+audi tt
+bmw 2002
+bmw m3
+bmw x3
+bmw x5
+bmw z4
+camaro 60s
+camaro 70s
+camaro 80s
+corvette c4
+corvette c5
+corvette c6
+dodge charger
+dodge dart
+dodge viper
+ferrari daytona
+ferrari testarossa
+ford gt40
+ford mustang 60s
+ford mustang 70s
+ford mustang 80s
+honda s2000
+jaguar xk
+lotus elise
+lotus esprit
+mazda miata
+mazda rx7
+mercedes 190
+mercedes c43
+opel gt
+porsche 911
+porsche 944
+porsche 968
+porsche 993
+porsche boxster
+porsche panamera
+shelby cobra
+subaru brz
+subaru wrx
+tesla model 3
+tesla model S
+tesla model X
+tesla roadster
+toyota mr2
+toyota supra
+vw gti
+vw scirocco
