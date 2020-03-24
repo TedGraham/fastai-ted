@@ -12,3 +12,5 @@ Do a search for a single category, stored sequentially named images into the spo
  
 Go through the sportscars.txt file, searching on each line individually
 >  python3 download_bing_images.py --output "datasets/sportscars" --file sportscars.txt --apikey YOUR_KEY_HERE
+
+Should run immediately on Google Cloud instances, you might need to install python3 and PILLOW on some machines.  
