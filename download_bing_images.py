@@ -8,9 +8,10 @@ import os
 # Script requires EITHER --query (for command line use) or --keywords-file (for querying a list of keywords)
 argumentParser = argparse.ArgumentParser(description="query bing image search and download the resulting images to the output directory")
 argumentGroup = argumentParser.add_mutually_exclusive_group(required=True)
-argumentGroup.add_argument("-q", "--query", help="search query to search Bing Image API for")
-argumentGroup.add_argument("-f", "--file", help="file with one or more keywords per line")
-argumentParser.add_argument("-o", "--output", required=True, help="output directory")
+argumentGroup.add_argument("--query", help="search query to search Bing Image API for, group multiword searches with quotes")
+argumentGroup.add_argument("--file", help="file with one or more keywords per line")
+argumentParser.add_argument("--apikey", required=True, help="Microsoft Cognitive Services API key, find yours at https://azure.microsoft.com/en-us/try/cognitive-services/my-apis/")
+argumentParser.add_argument("--output", required=True, help="output directory, image files will be created in this directory")
 args = argumentParser.parse_args()
 
 # if the output directory doesn't exist, create it
@@ -26,19 +27,16 @@ else:
     with open(args.file) as f:
         searchList = [line.strip() for line in f]
 
-print("[INFO] Performing {} search(es)".format(len(searchList)))
-
-# set your Microsoft Cognitive Services API key along with (1) the
-# maximum number of results for a given search and (2) the group size
-# for results (maximum of 50 per request)
-#API_KEY = "YOUR_API_KEY_GOES_HERE"    
-API_KEY = "437480bf603643de852e99c4cfda5228"
+# set the endpoint API URL and the user provided Microsoft Cognitive Services API key
+URL = "https://api.cognitive.microsoft.com/bing/v7.0/images/search"
+headers = {"Ocp-Apim-Subscription-Key" : args.apikey}
+# (1) the maximum number of results for a given search and 
+# (2) the group size for results (maximum of 50 per request)
 MAX_RESULTS = 100
 GROUP_SIZE = 50
-# set the endpoint API URL
-URL = "https://api.cognitive.microsoft.com/bing/v7.0/images/search"
 
-headers = {"Ocp-Apim-Subscription-Key" : API_KEY}
+print("[INFO] Performing {} search(es), downloading a maximum of {} files for each search".format(len(searchList), MAX_RESULTS))
+
 for term in searchList:
     params = {"q": term, "offset": 0, "count": GROUP_SIZE}
     search = requests.get(URL, headers=headers, params=params)
